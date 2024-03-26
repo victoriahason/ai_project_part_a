@@ -3,12 +3,10 @@
 
 from .core import PlayerColor, Coord, PlaceAction
 from .utils import render_board
+from queue import PriorityQueue
 
 
-def search(
-    board: dict[Coord, PlayerColor], 
-    target: Coord
-) -> list[PlaceAction] | None:
+def search(board: dict[Coord, PlayerColor], target: Coord) -> list[PlaceAction] | None:
     """
     This is the entry point for your submission. You should modify this
     function to solve the search problem discussed in the Part A specification.
