@@ -2,6 +2,7 @@
 # Project Part A: Single Player Tetress
 
 from .core import PlayerColor, Coord, PlaceAction
+from node import Node
 from .utils import render_board
 from queue import PriorityQueue
 
@@ -12,7 +13,8 @@ def relax(node1, node2):
     if() ##do i create a class node which has a field coord and a field value????????????
 
 def get_adjacent_available_coords(coord):
-    return [ Coord((coord.r)+1, coord.y), Coord((coord.r)-1, coord.y), Coord(coord.r, (coord.y)+1), Coord(coord.r+1, (coord.y)-1)]
+    for i in [ Coord((coord.r)+1, coord.y), Coord((coord.r)-1, coord.y), Coord(coord.r, (coord.y)+1), Coord(coord.r+1, (coord.y)-1)]:
+        ##If it is in the inital board dictionary or has been placed already, remove it as an option?
 
 def generatesuccessors(board): ##this returns a list of PLACE ACTIONS
     pass
@@ -60,6 +62,8 @@ def search(board: dict[Coord, PlayerColor], target: Coord) -> list[PlaceAction] 
     solution = [] #Initialse solution list
     pq = PriorityQueue() #initialize priority queue
     initial_state = board 
+    target_row = target.r
+    target_column = target.c
     
 
     pq.put(0, initial_state)  #putting the initial state in the queue, not sure if i sould use 0?
