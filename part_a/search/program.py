@@ -3,7 +3,6 @@
 
 ##can i import directoin??##
 from .core import PlayerColor, Coord, PlaceAction, Direction
-from node import Node
 from .utils import render_board
 from queue import PriorityQueue
 import copy
@@ -95,10 +94,9 @@ def search(board, target) -> list:
    ##Initializing##
     for (coord,color) in board.items():
         if color == PlayerColor.RED:
-            node = Node(coord)
             gscores[coord]=0 #initialize all the gscores to 0
-            h = closest_distance_to_r_or_c(node.coord, target)  ##maybe make it add the number of obstacles in the way? maybe add 1 for every obstacle in the way
-            pq.enqueue(node,h)
+            h = closest_distance_to_r_or_c(coord, target)  ##maybe make it add the number of obstacles in the way? maybe add 1 for every obstacle in the way
+            pq.enqueue(coord,h)
 
     while not pq.empty():
         startingcoord = pq.dequeue()
@@ -114,5 +112,5 @@ def search(board, target) -> list:
             if ((next not in gscores) or (newgscore < gscores[next])):
                 gscores[next] = newgscore
                 h = closest_distance_to_r_or_c(next, target)
-                pq.enqueue(node,h+newgscore)
+                pq.enqueue(next,h+newgscore)
     
