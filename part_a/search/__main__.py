@@ -15,7 +15,7 @@ from .program import search
 SOLUTION_PREFIX = "$SOLUTION"
 
 
-def parse_input(input: str) -> tuple[dict[Coord, PlayerColor], Coord]:
+def parse_input(input: str) -> tuple[dict['Coord', 'PlayerColor'], 'Coord']:
     """
     Parse input into the required data structures.
     """
@@ -43,7 +43,7 @@ def parse_input(input: str) -> tuple[dict[Coord, PlayerColor], Coord]:
         exit(1)
 
 
-def print_result(sequence: list[PlaceAction] | None):
+def print_result(sequence: list['PlaceAction'] | None):
     """
     Print the given action sequence, one action per line, or "NOT_FOUND" if no
     sequence was found.
@@ -53,7 +53,6 @@ def print_result(sequence: list[PlaceAction] | None):
             print(f"{SOLUTION_PREFIX} {action}")
     else:
         print(f"{SOLUTION_PREFIX} NOT_FOUND")
-
 
 def main():
     """

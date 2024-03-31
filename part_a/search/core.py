@@ -89,7 +89,7 @@ class Direction(Enum):
     Right = Vector2(0, 1)
 
     @classmethod
-    def _missing_(cls, value: tuple(int, int)):
+    def _missing_(cls, value: tuple[int, int]):
         for item in cls:
             if item.value == Vector2(*value):
                 return item
@@ -159,7 +159,7 @@ class PlaceAction():
     c4: Coord
 
     @property
-    def coords(self) -> set[Coord]:
+    def coords(self) -> set['Coord']:
         try:
             return set([self.c1, self.c2, self.c3, self.c4])
         except:
@@ -170,3 +170,4 @@ class PlaceAction():
             return f"PLACE({self.c1}, {self.c2}, {self.c3}, {self.c4})"
         except:
             return f"PLACE(<invalid coords>)"
+
