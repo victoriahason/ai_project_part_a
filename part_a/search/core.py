@@ -89,7 +89,7 @@ class Direction(Enum):
     Right = Vector2(0, 1)
 
     @classmethod
-    def _missing_(cls, value: tuple[int, int]):
+    def _missing_(cls, value: tuple(int, int)):
         for item in cls:
             if item.value == Vector2(*value):
                 return item
